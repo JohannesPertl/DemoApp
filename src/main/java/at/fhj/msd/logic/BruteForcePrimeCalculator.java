@@ -9,30 +9,35 @@ import org.apache.logging.log4j.Logger;
 public class BruteForcePrimeCalculator implements PrimeCalculator {
     private static final Logger LOGGER = LogManager.getLogger(BruteForcePrimeCalculator.class);
 
-    public BruteForcePrimeCalculator() { }
+    public BruteForcePrimeCalculator() {
+    }
 
     protected boolean isPrime(long n) {
-            for (int i = 2; i < n; i++){
-                if (n % i == 0){
-                    return false;
-                }
+        // Numbers <= 1 are not primes
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i < n; i++) {
+            if (n % i == 0) {
+                return false;
             }
-            return true;
+        }
+        return true;
     }
 
     @Override
     public void findPrimes(int start, int end, PrimeResultReceiver writer) throws PrimeOutputException {
-        if(start > end){
+        if (start > end) {
             throw new IllegalArgumentException("end must be greater than start");
         }
-        if(start < 1){
-            throw  new IllegalArgumentException("Start value must be great than 1");
+        if (start < 1) {
+            throw new IllegalArgumentException("Start value must be great than 1");
         }
         writer.startPrimeCalculation();
-        for(long i = start; i<=end; i++){
-            LOGGER.debug("Checking for prime at '{}'",i);
-            if(isPrime(i)){
-                LOGGER.debug("Found prime at '{}'",i);
+        for (long i = start; i <= end; i++) {
+            LOGGER.debug("Checking for prime at '{}'", i);
+            if (isPrime(i)) {
+                LOGGER.debug("Found prime at '{}'", i);
                 writer.foundPrime(i);
             }
         }

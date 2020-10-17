@@ -3,7 +3,8 @@ package at.fhj.msd.logic.receiver;
 public class ConsolePrimeResultReceiver extends AbstractPrimeResultReceiver {
 
 
-    public ConsolePrimeResultReceiver(){}
+    public ConsolePrimeResultReceiver() {
+    }
 
     @Override
     public void startPrimeCalculation() {
@@ -20,7 +21,7 @@ public class ConsolePrimeResultReceiver extends AbstractPrimeResultReceiver {
     @Override
     public void endPrimeCalculation() {
         float time = stopClock();
-        System.out.printf("==== Found: %d primes in %f ms === ",getCount(),time);
+        System.out.printf("==== Found: %d primes in %f ms === ", getCount(), time);
     }
 
     @Override

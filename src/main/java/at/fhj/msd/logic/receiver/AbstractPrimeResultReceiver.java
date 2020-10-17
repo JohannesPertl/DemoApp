@@ -1,15 +1,17 @@
 package at.fhj.msd.logic.receiver;
 
 public abstract class AbstractPrimeResultReceiver implements PrimeResultReceiver {
-    private long time =0;
+    private long time = 0;
     private long count = 0;
 
-    public AbstractPrimeResultReceiver(){ }
+    public AbstractPrimeResultReceiver() {
+    }
 
-    protected boolean isRunning(){
+    protected boolean isRunning() {
         return time > 0;
     }
-    protected void startClock(){
+
+    protected void startClock() {
         time = System.nanoTime();
     }
 
@@ -24,14 +26,14 @@ public abstract class AbstractPrimeResultReceiver implements PrimeResultReceiver
 
     @Override
     public void startPrimeCalculation() {
-        if(isRunning()){
+        if (isRunning()) {
             throw new IllegalStateException("Writer is currently being used");
         }
         startClock();
     }
 
-    protected float stopClock(){
-        float ms = (System.nanoTime() - time)/1_000_000;
+    protected float stopClock() {
+        float ms = (System.nanoTime() - time) / 1_000_000;
         time = 0;
         return ms;
     }
