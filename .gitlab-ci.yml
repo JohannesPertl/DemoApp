@@ -1,11 +1,16 @@
 stages:
-  - hello
-  - bye
-say_hello:
-  stage: hello
+  - build
+  - test
+  - package
+build:
+  stage: build
   script:
-    - echo "ci hello"
-say_bye:
-  stage: bye
+    - mvn compile
+test:
+  stage: test
   script:
-    - echo "ci good bye"
+    - mvn test
+package:
+  stage: package
+  script:
+    - mvn package
