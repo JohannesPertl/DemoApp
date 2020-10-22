@@ -1,0 +1,11 @@
+stages:
+  - hello
+  - bye
+say_hello:
+  stage: hello
+  script:
+    - echo "ci hello"
+say_bye:
+  stage: bye
+  script:
+    - echo "ci good bye"
