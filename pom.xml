@@ -59,11 +59,35 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.1.2</version>
+          <configuration>
+            <outputDirectory>./target/dist</outputDirectory>
+            <archive>
+              <manifest>
+                <mainClass>at.fhj.msd.PrimeFinderApplication</mainClass>
+                <addClasspath>true</addClasspath>
+                <classpathPrefix>libs/</classpathPrefix>
+              </manifest>
+            </archive>
+          </configuration>
+
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
           <version>3.1.2</version>
+          <executions>
+            <execution>
+              <id>copy-dependencies</id>
+              <phase>install</phase>
+              <goals>
+                <goal>copy-dependencies</goal>
+              </goals>
+              <configuration>
+                <includeScope>runtime</includeScope>
+                <outputDirectory>${project.build.directory}/dist/libs</outputDirectory>
+              </configuration>
+            </execution>
+          </executions>
         </plugin>
       </plugins>
   </build>
