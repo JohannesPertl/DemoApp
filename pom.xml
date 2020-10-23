@@ -84,7 +84,7 @@
               </goals>
               <configuration>
                 <includeScope>runtime</includeScope>
-                <outputDirectory>${project.build.directory}/dist/libs</outputDirectory>
+                <outputDirectory>.target/dist/libs</outputDirectory>
               </configuration>
             </execution>
           </executions>

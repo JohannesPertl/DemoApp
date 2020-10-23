@@ -1,11 +1,10 @@
-variables:
-  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
-
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - .m2/repository
-    - target/
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
 
 stages:
   - build
@@ -33,7 +32,7 @@ package:
   script:
     - mvn package
   artifacts:
-    name: "$CI_JOB_STAGE-$CI_COMMIT_REF_NAME"
+    name: "$CI_JOB_STAGE-$CI_COMMIT_REF_SLUG"
     paths:
       - target/dist
     expire_in: 4 weeks

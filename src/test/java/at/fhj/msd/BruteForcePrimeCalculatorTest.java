@@ -4,7 +4,7 @@ import at.fhj.msd.logic.BruteForcePrimeCalculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-// Mock class for testing protected method
+
 class BruteForcePrimeCalculatorMock extends BruteForcePrimeCalculator {
     @Override
     protected boolean isPrime(long n) {

@@ -13,7 +13,6 @@ public class BruteForcePrimeCalculator implements PrimeCalculator {
     }
 
     protected boolean isPrime(long n) {
-        // Numbers <= 1 are not primes
         if (n <= 1) {
             return false;
         }
